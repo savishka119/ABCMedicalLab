@@ -62,8 +62,8 @@
                     <div class="top-search">
                         <div class="container">
                             <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-addon"><i class="fa fa-search" onclick="Search()"></i></span>
+                                <input type="text" class="form-control" id="search" placeholder="Search">
                                 <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
                             </div>
                         </div>
@@ -99,7 +99,7 @@
                         <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
                             <ul class="nav navbar-nav navbar-center" data-in="fadeInDown" data-out="fadeOutUp">
                                 <li class="active"><a asp-controller="Home" asp-action="Index">home</a></li>
-                                <li><a asp-controller="Home" asp-action="Index">Air Craft</a></li>
+                                <li><a asp-controller="Home" asp-action="CheckUp">Check Up</a></li>
                                 @*<li><a asp-controller="Home" asp-action="Index">contact</a></li>*@
 
 
@@ -146,7 +146,7 @@
         </div><!--/.scroll-Top-->
 
     </footer>
-    
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/templateFront/js/jquery.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -175,6 +175,15 @@
     <!--Custom JS-->
 
     <script src="~/templateFront/js/custom.js"></script>
+   
+        <script>
+            function Search() {
+                let search = document.getElementById("search").value;
+                window.location.href = "/Public/Home/CheckUp?keyword=" + search;
+            }
+        </script>
+    
     @await RenderSectionAsync("Scripts", required: false)
+
 </body>
 </html>

@@ -1,0 +1,157 @@
+﻿@using System.Text.Json;
+@using Utility;
+@model Models.ViewModels.OrderVM
+
+@*<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <style>
+        [class*=sidebar-dark-] {
+            background-color: #002244;
+        }
+    </style>*@
+@*<link rel="stylesheet" href="~/css/bundles/style.min.css">*@
+<!--<link rel="stylesheet" href="~/template/plugins/fontawesome-free/css/all.min.css">-->
+<section class="populer-products">
+
+
+
+    <!-- Default box -->
+    <div class="card card-solid">
+        <div class="card-body">
+            <div class="row">
+                <hr />
+                <div class="col-12 col-sm-6">
+
+
+                    <div class="col-12">
+                        <img src="@Model.Test.ImgUrl" class="product-image" alt="Product Image">
+                    </div>
+
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="welcome-hero-txt">
+                        <h2>@Model.Test.Name</h2>
+                    </div><!--/.section-header-->
+                    <div class="bg-gray py-2 px-3 mt-4">
+                        <h2 class="mb-0">
+                            Rs: @Model.Test.Price .00
+                        </h2>
+
+                    </div>
+                    <br />
+                    <p>@Model.Test.Description</p>
+
+                    <hr>
+
+                    <form method="post">
+                        <input type="hidden" asp-for="Test.Id" />
+                        <input type="hidden" asp-for="Test" />
+                        <input type="hidden" asp-for="Test.Price" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Appoinment Date Time :</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="date" id="appoinmentDateTime" asp-for="Orders.AppoinmentDateTime" required class="form-control" />
+                                <span asp-validation-for="Orders.AppoinmentDateTime"></span>
+                            </div>
+                        </div>
+                        <br />  
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Patient Age :</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="number" id="age" asp-for="Orders.PatientAge" required class="form-control" />
+                                <span asp-validation-for="Orders.PatientAge"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Doctors Name :</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="age" asp-for="Orders.DoctorName" required class="form-control" />
+                                <span asp-validation-for="Orders.DoctorName"></span>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="col-md-12 mt-4">
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <button type="submit" onclick="return validateInput()" class="btn btn-primary btn-lg btn-flat col-md-12 col-sm-6">
+
+                                        <span class="lnr lnr-cart"></span>
+                                        Save Test Appoinment
+                                    </button>
+                                </div>
+                                <div class="col-md-4">
+
+                                    <div class="btn btn-default btn-lg btn-flat col-md-12 col-sm-6">
+                                        <span class="lnr lnr-bookmark"></span>
+                                        <a asp-area="Public" asp-controller="Home" asp-action="Index">Back To Main</a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <br />
+                    <div class="mt-4 product-share">
+                        <a><i class="fa fa-facebook-square"></i></a>
+                        <a><i class="fa fa-instagram"></i></a>
+                        <a><i class="fa fa-linkedin-square"></i></a>
+                        <a><i class="fa fa-envelope"></i></a>
+
+                    </div>
+
+                </div>
+            </div>
+            <br />
+            <div class="row mt-4">
+                <nav class="w-100">
+                    <div class="nav nav-tabs" id="product-tab" role="tablist">
+                        <a class="nav-item nav-link" id="product-comments-tab" data-toggle="tab" href="#product-comments" role="tab" aria-controls="product-comments" aria-selected="true">Comments</a>
+                    </div>
+                </nav>
+                <br />
+                <div class="tab-content p-3" id="nav-tabContent">
+
+                   
+
+                </div>
+            </div>
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+
+</section><!--/.populer-products-->
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function validateInput() {
+            let age = document.getElementById("age").value;
+            if (age == "") {
+              
+                alert("Please Enter Age");
+                return false;
+            }
+            else if (Number(age)<=0) {
+                //swal("Error", "Please Enter valied qty", "error");
+                alert("Please Enter valied Age");
+                return false;
+            }
+            return true;
+        }
+       
+    </script>
+}

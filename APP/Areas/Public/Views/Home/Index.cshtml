@@ -28,7 +28,7 @@
                             <div class="row">
                                 <div class="col-md-4 col-sm-12">
                                     <div class="single-inner-populer-product-img">
-                                        @*  <img src="assets/images/populer-products/p2.png" alt="populer-products images">*@
+                                       
                                         <img src="~/img/tests/T1.jpg" alt="populer-products images">
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
                                             Allergy and intolerance tests help identify the allergen causing the symptoms. Allergy tests can be performed by provocation tests or by blood sampling.
                                         </p>
                                         <div class="populer-products-price">
-                                            @*<h4>Sales Start from <span>Rs.5100</span></h4>*@
+                                          
                                         </div>
                                         
                                     </div>
@@ -75,7 +75,47 @@
 <!--new-arrivals start -->
 <!--/.new-arrivals-->
 <!--new-arrivals end -->
+<section id="new-arrivals" class="new-arrivals">
+    <div class="container">
+        <div class="section-header">
+            <h2>Testing </h2>
+        </div><!--/.section-header-->
+        <div class="new-arrivals-content">
+            <div class="row">
 
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-sm-4">
+                        <div class="single-new-arrival">
+                            <div class="single-new-arrival-bg">
+                                <img src="@item.ImgUrl" style="width:200px !important" alt="new-arrivals images">
+                                <div class="single-new-arrival-bg-overlay"></div>
+                                <div class="sale bg-1">
+                                    <p>Check up</p>
+                                </div>
+                                <div class="new-arrival-cart">
+                                    <p>
+                                        <span class="lnr lnr-cart"></span>
+                                        <a asp-area="Public" asp-controller="Home" asp-action="AddToOrder" asp-route-id="@item.Id">more <span>and </span> buy</a>
+                                    </p>
+                                    <p class="arrival-review pull-right">
+                                        <span class="lnr lnr-heart"></span>
+                                        <span class="lnr lnr-frame-expand"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <h4><a asp-area="Public" asp-controller="Home" asp-action="AddToOrder" asp-route-id="@item.Id">@item.Name</a></h4>
+                            <p class="arrival-product-price"><span>Rs.@item.Price.00</span></p>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div><!--/.container-->
+
+</section>
 
 <!-- clients end -->
 <!--newsletter strat -->

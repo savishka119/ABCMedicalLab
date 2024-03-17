@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Models.Test>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<section id="new-arrivals" class="new-arrivals">
+    <div class="container">
+        <div class="section-header">
+            <h2>Testing </h2>
+        </div><!--/.section-header-->
+        <div class="new-arrivals-content">
+            <div class="row">
+
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-sm-4">
+                        <div class="single-new-arrival">
+                            <div class="single-new-arrival-bg">
+                                <img src="@item.ImgUrl" style="width:200px !important" alt="new-arrivals images">
+                                <div class="single-new-arrival-bg-overlay"></div>
+                                <div class="sale bg-1">
+                                    <p>Check up</p>
+                                </div>
+                                <div class="new-arrival-cart">
+                                    <p>
+                                        <span class="lnr lnr-cart"></span>
+                                        <a asp-area="Public" asp-controller="Home" asp-action="AddToOrder" asp-route-id="@item.Id">more <span>and </span> buy</a>
+                                    </p>
+                                    <p class="arrival-review pull-right">
+                                        <span class="lnr lnr-heart"></span>
+                                        <span class="lnr lnr-frame-expand"></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <h4><a asp-area="Public" asp-controller="Home" asp-action="AddToOrder" asp-route-id="@item.Id">@item.Name</a></h4>
+                            <p class="arrival-product-price"><span>Rs.@item.Price.00</span></p>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div><!--/.container-->
+
+</section>
