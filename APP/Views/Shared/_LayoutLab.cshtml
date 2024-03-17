@@ -1,5 +1,4 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
@@ -81,33 +80,7 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-plane"></i>
-                                <p>
-                                    Check Up Manager
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-action="Index" asp-controller="Test" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>Manage Check Up</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-action="Create" asp-controller="Test" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>Create Check Up</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            
-                        </li> 
+                    
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-calendar"></i>
@@ -135,75 +108,7 @@
                             </ul>
                            
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-receipt"></i>
-                                <p>
-                                    Reports Manager
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-action="Index" asp-controller="Print" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>Orders</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-action="Books" asp-controller="Print" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>Air Craft</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-action="ReciveAmount" asp-controller="Print" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>Recive </p>
-                                    </a>
-                                </li>
-                            </ul> 
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-action="OnProcess" asp-controller="Print" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>On Process Aircraft</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-users"></i>
-                                <p>
-                                    User Manager
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-action="CustomerDetails" asp-controller="User" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>Manage Customer</p>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-action="Index" asp-controller="User" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>Manage Users</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                   
 
                     </ul>
                 </nav>

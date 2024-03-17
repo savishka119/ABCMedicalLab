@@ -81,19 +81,19 @@ namespace APP.Areas.Main.Controllers
                         {
                             UserName = applicationUserVM.Email,
                             Email = applicationUserVM.Email,
-                            EmailConfirmed = false,
+                            EmailConfirmed = true,
                             FirstName = applicationUserVM.FirstName,
                             LastName = applicationUserVM.LastName,
                             CreatedBy = logedInUser.Email,
                             CreatedOnUTC = DateTime.UtcNow,
-                            Role = SD.RoleAdmin
+                            Role = applicationUserVM.Role
                         };
                         var result = await _userManager.CreateAsync(applicationUser, applicationUserVM.Password);
 
                         if (result.Succeeded)
                         {
                             var user = await _unitOfWork.ApplicationUser.GetFirstOrDefaultAsync(x => x.Id == applicationUser.Id);
-                            await _userManager.AddToRoleAsync(user, SD.RoleAdmin);
+                            await _userManager.AddToRoleAsync(user, applicationUserVM.Role);
                            
 
                             _unitOfWork.CommitAsync(transaction);
@@ -219,7 +219,7 @@ namespace APP.Areas.Main.Controllers
         public async Task<IActionResult> GetAll()
         {
             var data = from a in await _unitOfWork.ApplicationUser.GetAllAsync()
-                       where a.Role==SD.RoleAdmin
+                       where a.Role==SD.RoleAdmin || a.Role==SD.RoleTechnician
                        select new
                        {
                            a.Email,

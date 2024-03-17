@@ -51,7 +51,7 @@
                         <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
                 </div>
-              
+
                 <div class="form-group row">
                     <div class="col-md-4">
                         <label class="required" asp-for="Password"></label>
@@ -68,6 +68,18 @@
                     <div class="col-md-8">
                         <input asp-for="ConfirmPassword" class="form-control" />
                         <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="ConfirmPassword"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <select asp-for="Role" class="form-control">
+                            <option value="@SD.RoleAdmin">Admin</option>
+                            <option value="@SD.RoleTechnician">Lab Technician</option>
+                            <option value="@SD.RoleCustomer">Customer</option>
+                        </select>
                     </div>
                 </div>
                 <div class="form-group row">

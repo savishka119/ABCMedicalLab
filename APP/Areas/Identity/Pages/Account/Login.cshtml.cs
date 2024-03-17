@@ -100,6 +100,10 @@ namespace APP.Areas.Identity.Pages.Account
                     {
                         return RedirectToAction("Index", "Home", new { Area = "Main" });
                     }
+                    else if(Role[0]==SD.RoleTechnician)
+                    {
+                        return RedirectToAction("Index", "Home", new { Area = "Lab" });
+                    }
                     else if (Role[0] == SD.RoleCustomer)
                     {
                         

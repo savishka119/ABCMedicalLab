@@ -1,0 +1,115 @@
+﻿@using System.Text.Json;
+@using Utility;
+@model Models.Test
+@{
+    //var groups = JsonSerializer.Serialize(Model.GroupList);
+}
+
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: black;
+    }
+
+    .required:after {
+        content: " *";
+        color: red;
+    }
+</style>
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-gradient-lightblue">
+            <h3 class="card-title" style="font-weight:bold">Create a Checkup(Test).</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="Name"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="ModelName"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="ModelName" class="form-control" />
+                        <span asp-validation-for="ModelName" class="text-danger"></span>
+                    </div>
+                </div>
+           
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="Price"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input type="number" asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="Description"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <textarea asp-for="Description" class="form-control"></textarea>
+
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="ImgUrl">Image</label>
+                    </div>
+                    <div class="col-md-8">
+
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <div class="custom-file">
+                                    <input type="file" name="files" id="uploadBox" multiple class="form-control" />
+                                </div>
+                                <span asp-validation-for="ImgUrl" class="text-danger"></span>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-8 offset-md-4">
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary form-control" asp-route-id="@Model">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*@section Styles{
+    <link rel="stylesheet" href="~/css/bundles/select2.min.css">
+    }*@
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+ 
+
+
+}

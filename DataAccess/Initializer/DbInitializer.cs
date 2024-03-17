@@ -52,13 +52,14 @@ namespace DataAccess.Initializer
 
             _roleManager.CreateAsync(new IdentityRole(SD.RoleAdmin)).GetAwaiter().GetResult();
             _roleManager.CreateAsync(new IdentityRole(SD.RoleCustomer)).GetAwaiter().GetResult();
+            _roleManager.CreateAsync(new IdentityRole(SD.RoleTechnician)).GetAwaiter().GetResult();
           
             if (!_db.ApplicationUsers.Any())
             {
                 var applicationUser = new ApplicationUser
                 {
-                    UserName = "admin@Aircraft.com",
-                    Email = "admin@Aircraft.com",
+                    UserName = "admin@ABCLab.com",
+                    Email = "admin@ABCLab.com",
                     EmailConfirmed = true,
                     FirstName = "System",
                     LastName = "Admin",
@@ -68,7 +69,7 @@ namespace DataAccess.Initializer
                 _userManager.CreateAsync(applicationUser, "Admin@#1234").GetAwaiter().GetResult();
 
 
-                ApplicationUser user = _db.ApplicationUsers.Where(u => u.Email == "admin@Aircraft.com").FirstOrDefault();
+                ApplicationUser user = _db.ApplicationUsers.Where(u => u.Email == "admin@ABCLab.com").FirstOrDefault();
 
                 _userManager.AddToRoleAsync(user, SD.RoleAdmin).GetAwaiter().GetResult();
 

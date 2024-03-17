@@ -29,11 +29,13 @@ namespace Models.ViewModels
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
-        [Display(Name = "User Groups")]
-        public List<int> UserGroups { get; set; }
+        //[Required]
+        //[Display(Name = "User Groups")]
+        //public List<int> UserGroups { get; set; }
 
-        public IEnumerable<SelectListItem> GroupList { get; set; }
+        //public IEnumerable<SelectListItem> GroupList { get; set; }
+
+        public string Role { get; set; }
 
     }
 }

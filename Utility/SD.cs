@@ -14,6 +14,7 @@ namespace Utility
         #region Application Role
         public const string RoleAdmin = "Admin";
         public const string RoleCustomer = "Customer";
+        public const string RoleTechnician = "LabTechnician";
         #endregion
         #region Status
         public const string Active = "ACT";
