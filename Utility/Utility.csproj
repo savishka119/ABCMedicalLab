@@ -5,7 +5,10 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.12" />
+    <PackageReference Include="MimeKit" Version="4.3.0" />
+    <PackageReference Include="PayPal" Version="1.9.1" />
   </ItemGroup>
 
 </Project>

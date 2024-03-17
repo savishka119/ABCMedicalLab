@@ -41,8 +41,8 @@ namespace APP
                 options => options.SignIn.RequireConfirmedAccount = true
                 ).AddDefaultTokenProviders().AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddSingleton<ITempDataProvider, CookieTempDataProvider>();
-
-
+            services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<EmailOptions>(Configuration.GetSection("EmailOptions"));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IDbInitializer, DbInitializer>();
 
