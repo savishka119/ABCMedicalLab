@@ -1,0 +1,100 @@
+@using System.Text.Json;
+@using Utility;
+@model Models.ViewModels.ApplicationUserVM
+@{
+//var groups = JsonSerializer.Serialize(Model.GroupList);
+}
+
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: black;
+    }
+
+    .required:after {
+        content: " *";
+        color: red;
+    }
+</style>
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-gradient-lightblue">
+            <h3 class="card-title" style="font-weight:bold">Create a new account.</h3>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="Email"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="FirstName"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="LastName"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+              
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="Password"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="ConfirmPassword"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-8 offset-md-4">
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary form-control">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*@section Styles{
+<link rel="stylesheet" href="~/css/bundles/select2.min.css">
+}*@
+
+@section Scripts{
+<partial name="_ValidationScriptsPartial" />
+@*<script src="~/js/bundles/select2.min.js"></script>
+<script id="script" src="~/js/custom/user/create.js"></script>*@
+@* <script id="script" data-admin="@SD.BelongsToAdmin" data-sales="@SD.BelongsToSales" data-adminGroups="@adminGroups"
+    data-salesGroups="@salesGroups" src="~/js/custom/user/create.js"></script> *@
+}

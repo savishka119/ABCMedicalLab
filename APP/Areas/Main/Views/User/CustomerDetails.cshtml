@@ -1,0 +1,83 @@
+﻿@{ ViewData["Title"] = "Home Page"; }
+
+<div class="container">
+    <div class="card card-light">
+        <div class="card-header">
+            <h3 class="card-title font-weight-bold">System Customers</h3>
+           
+        </div>
+        <div class="card-body">
+            <table id="tblData" class="table table-bordered table-hover" style="width:100%;">
+                <thead>
+                    <tr>
+                        <th>Email</th>
+                        <th>Name</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="action" style="display: none;">
+    <div class="text-center d-flex justify-content-center">
+        <a class="btn-sm btn-success text-white mx-2" style="cursor:pointer">
+           View
+        </a>
+      
+    </div>
+</div>
+
+@section Styles{
+    <link rel="stylesheet" href="~/css/bundles/dataTables.min.css">
+    <link rel="stylesheet" href="~/css/bundles/sweetalert2.min.css">
+    <link rel="stylesheet" href="~/css/bundles/toastr.min.css">
+}
+
+@section Scripts{
+    <script src="~/js/bundles/dataTables.min.js"></script>
+    <script src="~/js/bundles/sweetalert2.min.js"></script>
+    <script src="~/js/bundles/toastr.min.js"></script>
+<script>
+    "use strict";
+    let userTable;
+
+    $(function () {
+        userTable = app.module.controls.load();
+    });
+
+    let app = {
+        module: {
+            controls: {
+                load: function () {
+                    return $("#tblData").DataTable({
+                        ajax: {
+                            url: "/Main/User/GetAllCustomers",
+                        },
+                        scrollX: true,
+                        columns: [
+                            { data: "email", autoWidth: true },
+                            { data: "name", autoWidth: true },
+                            {
+                                data: "id",
+                                render: function (data, type, row) {
+                                    $("#action .btn-success").attr(
+                                        "href",
+                                        `/Main/User/ViewCustomer/${data}`
+                                    );
+            
+                                    return $("#action").clone().html();
+                                },
+                                autoWidth: true,
+                            },
+                        ],
+                    });
+                },
+            },
+        },
+    };
+</script>
+   
+
+}

@@ -1,0 +1,93 @@
+﻿@using System.Text.Json;
+@using Utility;
+@model Models.ApplicationUser
+@{
+    //var groupList = JsonSerializer.Serialize(Model.GroupList);
+    //string userGroups = string.Join(",", Model.UserGroups);
+}
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: black;
+    }
+</style>
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-gradient-lightblue">
+            <h3 class="card-title" style="font-weight:bold">Lock / Un-Lock Customer</h3>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input type="hidden" asp-for="CreatedBy" value="@Model.CreatedBy" />
+                <input type="hidden" asp-for="Id" value="@Model.Id" />
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="FirstName"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="FirstName" disabled class="form-control" />
+                        
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="LastName"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="LastName" disabled class="form-control" />
+              
+                    </div>
+                </div> 
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="Email"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="Email" disabled class="form-control" />
+                      
+                    </div>
+                </div> 
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label asp-for="Address"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <input asp-for="Address" disabled class="form-control" />
+                    
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-8 offset-md-4">
+                        <div class="row">
+                            <div class="col">
+                                @if (Model.CurStatus == SD.Active)
+                                {
+                                    <button type="submit" class="btn btn-warning form-control">Lock</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-success form-control">Un-Lock</button>
+                                }
+
+                            </div>
+                            <div class="col">
+                                <a asp-action="CustomerDetails" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*@section Styles{
+    <link rel="stylesheet" href="~/css/bundles/select2.min.css">
+    }*@
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    @*<script src="~/js/bundles/select2.min.js"></script>
+        <script id="script" data-userGroups="@userGroups" src="~/js/custom/user/editProfile.js"></script>*@
+}

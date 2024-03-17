@@ -1,0 +1,105 @@
+[
+  {
+    "outputFileName": "wwwroot/css/bundles/style.min.css",
+    "inputFiles": [
+      "wwwroot/template/plugins/fontawesome-free/css/all.min.css",
+      "wwwroot/template/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css",
+      "wwwroot/template/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
+      "wwwroot/template/plugins/jqvmap/jqvmap.min.css",
+      "wwwroot/template/dist/css/adminlte.min.css",
+      "wwwroot/template/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
+      "wwwroot/template/plugins/daterangepicker/daterangepicker.css",
+      "wwwroot/template/plugins/summernote/summernote-bs4.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/script.min.js",
+    "inputFiles": [
+      "wwwroot/template/plugins/jquery/jquery.min.js",
+      "wwwroot/template/plugins/jquery-ui/jquery-ui.min.js",
+      "wwwroot/template/plugins/bootstrap/js/bootstrap.bundle.min.js",
+      "wwwroot/template/plugins/chart.js/Chart.min.js",
+      "wwwroot/template/plugins/sparklines/sparkline.js",
+      "wwwroot/template/plugins/jqvmap/jquery.vmap.min.js",
+      "wwwroot/template/plugins/jqvmap/maps/jquery.vmap.usa.js",
+      "wwwroot/template/plugins/jquery-knob/jquery.knob.min.js",
+      "wwwroot/template/plugins/moment/moment.min.js",
+      "wwwroot/template/plugins/daterangepicker/daterangepicker.js",
+      "wwwroot/template/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js",
+      "wwwroot/template/plugins/plugins/summernote/summernote-bs4.min.js",
+      "wwwroot/template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+      "wwwroot/template/dist/js/adminlte.min.js",
+      "wwwroot/template/dist/js/pages/dashboard.js",
+      "wwwroot/template/plugins/calander/clndr.min.js",
+      "wwwroot/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/bundles/dataTables.min.css",
+    "inputFiles": [
+      "wwwroot/template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css",
+      "wwwroot/template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css",
+      "wwwroot/template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/dataTables.min.js",
+    "inputFiles": [
+      "wwwroot/template/plugins/datatables/jquery.dataTables.min.js",
+      "wwwroot/template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js",
+      "wwwroot/template/plugins/datatables-responsive/js/dataTables.responsive.min.js",
+      "wwwroot/template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js",
+      "wwwroot/template/plugins/datatables-buttons/js/dataTables.buttons.min.js",
+      "wwwroot/template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js",
+      "wwwroot/template/plugins/jszip/jszip.min.js",
+      "wwwroot/template/plugins/pdfmake/pdfmake.min.js",
+      "wwwroot/template/plugins/pdfmake/vfs_fonts.js",
+      "wwwroot/template/plugins/datatables-buttons/js/buttons.html5.min.js",
+      "wwwroot/template/plugins/datatables-buttons/js/buttons.print.min.js",
+      "wwwroot/template/plugins/datatables-buttons/js/buttons.colVis.min.js"
+    
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/bundles/select2.min.css",
+    "inputFiles": ["wwwroot/template/plugins/select2/css/select2.min.css"]
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/select2.min.js",
+    "inputFiles": ["wwwroot/template/plugins/select2/js/select2.min.js"]
+  },
+  {
+    "outputFileName": "wwwroot/css/bundles/sweetalert2.min.css",
+    "inputFiles": ["wwwroot/template/plugins/sweetalert2/sweetalert2.min.css"]
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/sweetalert2.min.js",
+    "inputFiles": [
+      "wwwroot/template/plugins/sweetalert2/sweetalert2.all.js",
+      "wwwroot/template/plugins/sweetalert2/sweetalert2.min.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/bundles/toastr.min.css",
+    "inputFiles": ["wwwroot/template/plugins/toastr/toastr.min.css"]
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/toastr.min.js",
+    "inputFiles": ["wwwroot/template/plugins/toastr/toastr.min.js"]
+  },
+  {
+    "outputFileName": "wwwroot/css/bundles/styleJsReport.min.css",
+    "inputFiles": [
+      "wwwroot/template/report/bootstrap.min.css",
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/bundles/scriptJsReport.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.min.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "wwwroot/js/site.js"
+    ]
+  }
+]
