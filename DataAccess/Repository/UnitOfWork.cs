@@ -22,6 +22,7 @@ namespace DataAccess.Repository
             Order = new OrderRepository(_db);
         
             TestResult = new TestResultRepository(_db);
+            Query = new QueryRepository(_db);
            
             SP_Call = new SP_Call(_db);
         }
@@ -31,6 +32,7 @@ namespace DataAccess.Repository
         public ITestRepository Tests { get; private set; }
         public IOrderRepository Order { get; private set; }
         public ITestResultRepository TestResult { get; private set; }
+        public IQueryRepository Query { get; private set; }
         public ISP_Call SP_Call { get; private set; }
 
         public void Dispose()

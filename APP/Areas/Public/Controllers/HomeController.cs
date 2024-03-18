@@ -157,6 +157,45 @@ namespace APP.Areas.Public.Controllers
 
             return View(obj);
         }
+
+        public IActionResult Queries()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task< IActionResult> Queries(Query query)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var user = await _unitOfWork.ApplicationUser.GetFirstOrDefaultAsync(a => a.Id == claim.Value);
+            if (ModelState.IsValid)
+            {
+                using (var transaction = await _unitOfWork.BeginTransactionAsync())
+                {
+                    try
+                    {
+
+
+                        query.UserId = claim.Value;
+                        query.CurStatus = SD.Active;
+                        query.QueryStatus = SD.Pending;
+                        await _unitOfWork.Query.AddAsync(query);
+                        _unitOfWork.SaveAsync();
+                        _unitOfWork.CommitAsync(transaction);
+                        return RedirectToAction(nameof(Index));
+                    }
+                    catch (Exception)
+                    {
+                        _unitOfWork.RollbackAsync(transaction);
+                        return StatusCode(StatusCodes.Status500InternalServerError);
+                    }
+
+                }
+            }
+
+            return View(query);
+        }
         #region Paypal Interfration
         public async Task<IActionResult> PaymentWithPaypal(string guid = "", string Cancel = null, string token = "", string blogId = "", string PayerID = "",string amt="",string orderId="")
         {

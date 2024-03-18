@@ -15,6 +15,7 @@ namespace DataAccess.Repository.IRepository
         ITestResultRepository TestResult { get; }
      
         IOrderRepository Order { get; }
+        IQueryRepository Query { get; }
      
        
       

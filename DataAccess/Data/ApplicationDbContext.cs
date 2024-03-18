@@ -21,6 +21,7 @@ namespace DataAccess.Data
         public DbSet<TestResults> TestResults { get; set; }
      
         public DbSet<Orders> Orders { get; set; }
+        public DbSet<Query> Queries { get; set; }
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

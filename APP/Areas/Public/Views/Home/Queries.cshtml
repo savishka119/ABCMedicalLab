@@ -1,0 +1,85 @@
+﻿@using System.Text.Json;
+@using Utility;
+@model Models.Query
+@*<link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <style>
+        [class*=sidebar-dark-] {
+            background-color: #002244;
+        }
+    </style>*@
+@*<link rel="stylesheet" href="~/css/bundles/style.min.css">*@
+<!--<link rel="stylesheet" href="~/template/plugins/fontawesome-free/css/all.min.css">-->
+<section class="populer-products">
+
+
+
+    <!-- Default box -->
+    <div class="card card-solid">
+        <div class="card-body">
+            <div class="row">
+                <hr />
+              
+                <div class="col-12 col-sm-6">
+                    
+
+                    <form method="post">
+                      
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Query :</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <textarea type="datetime-local" asp-for="QueryDetails" required class="form-control" ></textarea>
+                                <span asp-validation-for="QueryDetails"></span>
+                            </div>
+                        </div>
+                        
+                        <br />
+                        <br />
+                        <div class="col-md-12 mt-4">
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <button type="submit"  class="btn btn-primary btn-lg btn-flat col-md-12 col-sm-6">
+
+                                        <span class="lnr lnr-plus-circle"></span>
+                                        Save Query
+                                    </button>
+                                </div>
+                                <div class="col-md-4">
+
+                                    <div class="btn btn-default btn-lg btn-flat col-md-12 col-sm-6">
+                                        <span class="lnr loading-img"></span>
+                                        <a asp-area="Public" asp-controller="Home" asp-action="Index">Back To Main</a>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <br />
+                  
+
+                </div>
+            </div>
+            <br />
+          
+        </div>
+        <!-- /.card-body -->
+    </div>
+    <!-- /.card -->
+
+
+</section><!--/.populer-products-->
+
+
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+      
+
+    </script>
+}
