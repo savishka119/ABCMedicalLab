@@ -1,0 +1,117 @@
+﻿@using System.Text.Json;
+@using Utility;
+@model Models.TestResults
+@{
+    //var groups = JsonSerializer.Serialize(Model.GroupList);
+}
+
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: black;
+    }
+
+    .required:after {
+        content: " *";
+        color: red;
+    }
+</style>
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-gradient-lightblue">
+            <h3 class="card-title" style="font-weight:bold">Add Test Result.</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" value="@Model.Id" />
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="Orders.Test.Name"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <p>@Model.Orders.Test.Name</p>
+                        
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="Orders.DoctorName"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <p>@Model.Orders.DoctorName</p>
+                       
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="Orders.TotPaid"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <p>@Model.Orders.TotPaid</p>
+                      
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="OrderId"></label>
+                    </div>
+                    <div class="col-md-8">
+                        <p>@Model.OrderId</p>
+
+                        <input type="number" asp-for="OrderId" hidden class="form-control" />
+                      
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required" asp-for="imgUrl">Image</label>
+                    </div>
+                    <div class="col-md-8">
+
+                        <div class="input-group">
+                            <div class="custom-file">
+                                <div class="custom-file">
+                                    <input type="file" name="files" id="uploadBox" multiple class="form-control" />
+                                </div>
+                                <span asp-validation-for="imgUrl" class="text-danger"></span>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">Upload</span>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-8 offset-md-4">
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary form-control" asp-route-id="@Model">Create</button>
+                            </div>
+                            <div class="col">
+                                <a asp-action="ViewPaidOrder" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*@section Styles{
+    <link rel="stylesheet" href="~/css/bundles/select2.min.css">
+    }*@
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+
+
+}

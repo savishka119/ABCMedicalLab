@@ -1,0 +1,110 @@
+﻿@using System.Text.Json;
+@using Utility;
+@model Models.Orders
+@{ var orderStatus = ""; }
+<style>
+    .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        color: black;
+    }
+
+    .required:after {
+        content: " *";
+        color: red;
+    }
+</style>
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header bg-gradient-lightblue">
+            <h3 class="card-title" style="font-weight:bold">Aircraft.</h3>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data">
+
+                <input type="hidden" asp-for="Id" value="@Model.Id" />
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="col-md-12 d-flex align-items-stretch flex-column">
+                    <div class="card bg-light d-flex flex-fill">
+                        <div class="card-header text-muted border-bottom-0">
+                            Order Information
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h3>@Model.User.UserName</h3>
+                                    <h6><b>Date: </b>@Model.OrderDate </h6>
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <br />
+                                    <ul class="ml-4 mb-0 fa-ul text-muted">
+
+                                        <li class="large"><span class="fa-li"><i class="fas fa-lg fa-file-invoice-dollar"></i></span><h3>Price :RS. @Model.TotAmount.00</h3> </li>
+                                        <li class="small"><span class="fa-li"></span> Paid Amount :RS. @Model.TotPaid.00</li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 text-center">
+                                    @{ orderStatus = Model.OrderStatus == SD.Delivered ? "Deliverd" : (Model.OrderStatus == SD.OnProcess ? "On Delivery Process" : "Pending"); }
+                                    <div class="medium"><span class="fa-li"><i class="fas fa-lg fa-square-o"></i></span> Order Status:@orderStatus</div>
+                                </div>
+                            </div>
+                            <br />
+
+                        </div>
+                        <div class="card-footer">
+                            <div class="text-right">
+
+                                <div class="row">
+                                    <div class="col">
+
+                                        <button type="submit" class="btn btn-warning form-control">Pay</button>
+
+
+                                    </div>
+                                    <div class="col">
+                                        <a asp-action="PayOrder" class="btn btn-success form-control">Back to List</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@*@section Styles{
+    <link rel="stylesheet" href="~/css/bundles/select2.min.css">
+    }*@
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        function pay(id, amount) {
+            Swal.fire({
+                title: `Are you sure you want to pay Rs.${amount}?`,
+                // text: "You will not be able to restore the data!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, Pay it!",
+            }).then((willPay) => {
+                if (willPay.isConfirmed) {
+                    $("#action a").attr('href', `/BranchUser/Home/MakePayment/` + id)
+                    $("#action a")[0].click();
+                }
+            });
+        }
+    </script>
+
+}

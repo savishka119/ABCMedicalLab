@@ -15,6 +15,7 @@ using Utility;
 namespace APP.Areas.Main.Controllers
 {
     [Area("Main")]
+    [Authorize(Roles = SD.RoleAdmin)]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -34,9 +35,9 @@ namespace APP.Areas.Main.Controllers
             {
                 return Redirect(Url.Action("Login", "Account", new { area = "Identity" }));
             }
-            TempData["OrdersCount"] = 5;
-            TempData["PendingOrder"] = 2;
-            TempData["ProcessOrder"] =3;
+            TempData["OrdersCount"] = (await _unitOfWork.Order.GetAllAsync()).Count();
+            TempData["PendingOrder"] = (await _unitOfWork.Order.GetAllAsync(a=>a.TotPaid==0)).Count();
+            TempData["ProcessOrder"] = (await _unitOfWork.Order.GetAllAsync(a => a.TotPaid > 0)).Count();
             TempData["TotCustomer"] = (await _unitOfWork.ApplicationUser.GetAllAsync(a=>a.Role==SD.RoleCustomer && a.CurStatus==SD.Active)).Count();
             
             return View();

@@ -1,25 +1,19 @@
 ﻿@{ ViewData["Title"] = "Test Page"; }
 
 <section class="populer-products">
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-  
+
+
     <div class="populer-products-content">
         <div class="container">
             <div class="card card-light">
                 <div class="card-header">
-                    <h3 class="card-title font-weight-bold">Non Paid Checkup List</h3>
+                    <h3 class="card-title font-weight-bold">Paid Checkup List</h3>
                     <div class="card-tools">
                         @*<a class="btn-sm btn-info text-white" asp-area="Main" asp-controller="Test" asp-action="Create">
-                Create New Test
-            </a>*@
+                                Create New Test
+                            </a>*@
                     </div>
-                    <br />
-                    <br />
-                    <br />
+
                 </div>
                 <div class="card-body">
                     <table id="tblData" class="table table-bordered table-hover" style="width:100%;">
@@ -41,14 +35,14 @@
 
         <div id="action" style="display: none;">
             <div class="text-center d-flex justify-content-center">
-                <a class="btn-sm btn-success text-white mx-2" style="cursor:pointer">
-                    Pay
+               
+                <a class="btn-sm btn-primary text-white" style="cursor:pointer;">
+                    View
                 </a>
-
 
             </div>
         </div>
-        </div>
+    </div>
 </section>
 @section Styles{
     <link rel="stylesheet" href="~/css/bundles/dataTables.min.css">
@@ -73,7 +67,7 @@
                 load: function () {
                     return $("#tblData").DataTable({
                         ajax: {
-                            url: "/Public/Home/GetAllNonPaidInvoice",
+                            url: "/Public/Home/GetAllPaidInvoice",
                         },
                         scrollX: true,
                         columns: [
@@ -87,11 +81,11 @@
                             {
                                 data: "id",
                                 render: function (data, type, row) {
-                                    $("#action .btn-success").attr(
+                                 
+                                    $("#action .btn-primary").attr(
                                         "href",
-                                        `/Public/Home/PaymentWithPaypal?amt=${row.dueAmt}&orderId=${data}`
+                                        `/Public/Home/ViewReport/${data}`
                                     );
-
                                     return $("#action").clone().html();
                                 },
                                 autoWidth: true,

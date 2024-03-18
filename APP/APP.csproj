@@ -31,6 +31,7 @@
     <Folder Include="ViewComponents\" />
     <Folder Include="Views\Shared\Components\" />
     <Folder Include="wwwroot\img\checkUp\" />
+    <Folder Include="wwwroot\img\testResult\" />
     <Folder Include="wwwroot\img\tests\" />
     <Folder Include="wwwroot\template\plugins\calander\" />
   </ItemGroup>

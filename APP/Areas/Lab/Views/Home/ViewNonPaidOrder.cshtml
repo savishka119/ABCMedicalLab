@@ -1,12 +1,8 @@
 ﻿@{ ViewData["Title"] = "Test Page"; }
 
 <section class="populer-products">
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-  
+   
+
     <div class="populer-products-content">
         <div class="container">
             <div class="card card-light">
@@ -14,12 +10,10 @@
                     <h3 class="card-title font-weight-bold">Non Paid Checkup List</h3>
                     <div class="card-tools">
                         @*<a class="btn-sm btn-info text-white" asp-area="Main" asp-controller="Test" asp-action="Create">
-                Create New Test
-            </a>*@
+                                Create New Test
+                            </a>*@
                     </div>
-                    <br />
-                    <br />
-                    <br />
+                  
                 </div>
                 <div class="card-body">
                     <table id="tblData" class="table table-bordered table-hover" style="width:100%;">
@@ -48,7 +42,7 @@
 
             </div>
         </div>
-        </div>
+    </div>
 </section>
 @section Styles{
     <link rel="stylesheet" href="~/css/bundles/dataTables.min.css">
@@ -73,7 +67,7 @@
                 load: function () {
                     return $("#tblData").DataTable({
                         ajax: {
-                            url: "/Public/Home/GetAllNonPaidInvoice",
+                            url: "/Lab/Home/GetAllNonPaidInvoice",
                         },
                         scrollX: true,
                         columns: [
@@ -89,7 +83,7 @@
                                 render: function (data, type, row) {
                                     $("#action .btn-success").attr(
                                         "href",
-                                        `/Public/Home/PaymentWithPaypal?amt=${row.dueAmt}&orderId=${data}`
+                                        `/Lab/Home/PayOrderRcpt/${data}`
                                     );
 
                                     return $("#action").clone().html();

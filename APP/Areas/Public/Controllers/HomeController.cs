@@ -139,6 +139,24 @@ namespace APP.Areas.Public.Controllers
         {
             return View();
         }
+        [Authorize(Roles = SD.RoleCustomer)]
+        public IActionResult ViewPaidOrder()
+        {
+            return View();
+        }
+        [Authorize(Roles = SD.RoleCustomer)]
+        public async Task<IActionResult> ViewReport(string id)
+        {
+
+            var obj = await _unitOfWork.TestResult.GetFirstOrDefaultAsync(a => a.OrderId == Convert.ToInt32(id), includeProperties: "Orders,Orders.Test");
+            if (obj == null)
+            {
+                obj = new TestResults();
+
+            }
+
+            return View(obj);
+        }
         #region Paypal Interfration
         public async Task<IActionResult> PaymentWithPaypal(string guid = "", string Cancel = null, string token = "", string blogId = "", string PayerID = "",string amt="",string orderId="")
         {
@@ -304,6 +322,23 @@ namespace APP.Areas.Public.Controllers
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             var objList = (await _unitOfWork.Order.GetAllAsync(a => a.CurStatus == SD.Active && a.TotAmount>a.TotPaid && a.UserId==claim.Value,includeProperties: "Test"))
+                .Select(a=> new {
+                    name=a.Test.Name,
+                    modelName=a.Test.ModelName,
+                    price=a.TotAmount,
+                    dueAmt=a.TotAmount-a.TotPaid,
+                    doctorName=a.DoctorName,
+                    appoinmentDate=a.AppoinmentDateTime.ToString("yyyy-MMM-dd hh:mm:ss tt"),
+                    id=a.Id
+                });
+            return Json(new { data = objList });
+        } 
+        [HttpGet]
+        public async Task<IActionResult> GetAllPaidInvoice()
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+            var objList = (await _unitOfWork.Order.GetAllAsync(a => a.CurStatus == SD.Active && a.TotAmount<=a.TotPaid && a.UserId==claim.Value,includeProperties: "Test"))
                 .Select(a=> new {
                     name=a.Test.Name,
                     modelName=a.Test.ModelName,
