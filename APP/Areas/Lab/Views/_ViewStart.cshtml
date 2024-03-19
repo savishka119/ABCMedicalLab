@@ -1,3 +1,20 @@
-﻿@{
-    Layout = "~/Views/Shared/_LayoutLab.cshtml";
-}
+﻿@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor _httpContext
+@using Utility
+@{
+    var role = _httpContext.HttpContext.Session.GetString("Role");
+    if (role==SD.RoleAdmin)
+    {
+        Layout = "~/Views/Shared/_LayoutMain.cshtml";
+    }
+    else if(role==SD.RoleTechnician)
+    {
+        Layout = "~/Views/Shared/_LayoutLab.cshtml";
+    }
+    else
+    {
+
+        Layout = "~/Views/Shared/_LayoutLab.cshtml";
+    }
+ }

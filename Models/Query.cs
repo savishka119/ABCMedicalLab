@@ -21,6 +21,7 @@ namespace Models
         public string QueryStatus { get; set; }
         [Required]
         public string QueryDetails { get; set; }
+        public string Reply { get; set; } = "";
      
     }
 }

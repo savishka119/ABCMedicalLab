@@ -135,7 +135,26 @@
                             </ul>
 
                         </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-calendar"></i>
+                                <p>
+                                    Query Manager
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
 
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-action="Index" asp-controller="Queries" asp-area="Lab" class="nav-link">
+                                        <i class="far fa-circle nav-icon" style="font-size: small;"></i>
+                                        <p>Query List</p>
+                                    </a>
+                                </li>
+                            </ul>
+
+
+                        </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-receipt"></i>
@@ -149,34 +168,27 @@
                                 <li class="nav-item">
                                     <a asp-action="Index" asp-controller="Print" asp-area="Main" class="nav-link">
                                         <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>Orders</p>
+                                        <p>Due Bills</p>
                                     </a>
                                 </li>
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-action="Books" asp-controller="Print" asp-area="Main" class="nav-link">
+                                    <a asp-action="SalesInvoice" asp-controller="Print" asp-area="Main" class="nav-link">
                                         <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>Air Craft</p>
+                                        <p>Sales Report</p>
                                     </a>
                                 </li>
                             </ul>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a asp-action="ReciveAmount" asp-controller="Print" asp-area="Main" class="nav-link">
+                                    <a asp-action="Queries" asp-controller="Print" asp-area="Main" class="nav-link">
                                         <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>Recive </p>
+                                        <p>Queries Report </p>
                                     </a>
                                 </li>
                             </ul>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a asp-action="OnProcess" asp-controller="Print" asp-area="Main" class="nav-link">
-                                        <i class="far fa-circle nav-icon" style="font-size: small;"></i>
-                                        <p>On Process Aircraft</p>
-                                    </a>
-                                </li>
-                            </ul>
+                           
                         </li>
 
                         <li class="nav-item">

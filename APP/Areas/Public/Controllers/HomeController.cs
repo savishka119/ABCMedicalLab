@@ -157,7 +157,7 @@ namespace APP.Areas.Public.Controllers
 
             return View(obj);
         }
-
+        [Authorize(Roles = SD.RoleCustomer)]
         public IActionResult Queries()
         {
             return View();

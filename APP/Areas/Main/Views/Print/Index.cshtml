@@ -1,0 +1,92 @@
+﻿@{ ViewData["Title"] = "Test Page"; }
+
+<section class="populer-products">
+
+
+    <div class="populer-products-content">
+        <div class="container">
+            <div class="card card-light">
+                <div class="card-header">
+                    <h3 class="card-title font-weight-bold">Due Invoice Report</h3>
+                    <div class="card-tools">
+                        @*<a class="btn-sm btn-info text-white" asp-area="Main" asp-controller="Test" asp-action="Create">
+                                Create New Test
+                            </a>*@
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <table id="tblData" class="table table-bordered table-hover" style="width:100%;">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Model</th>
+                                <th>Price</th>
+                                <th>Due Amount</th>
+                                <th>Doctor</th>
+                                <th>Appoinment Date</th>
+                              
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div id="action" style="display: none;">
+            <div class="text-center d-flex justify-content-center">
+                <a class="btn-sm btn-success text-white mx-2" style="cursor:pointer">
+                    Pay
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+@section Styles{
+    <link rel="stylesheet" href="~/css/bundles/dataTables.min.css">
+    <link rel="stylesheet" href="~/css/bundles/sweetalert2.min.css">
+    <link rel="stylesheet" href="~/css/bundles/toastr.min.css">
+}
+
+@section Scripts{
+    <script src="~/js/bundles/dataTables.min.js"></script>
+    <script src="~/js/bundles/sweetalert2.min.js"></script>
+    <script src="~/js/bundles/toastr.min.js"></script>
+    <script>"use strict";
+    let userTable;
+
+    $(function () {
+        userTable = app.module.controls.load();
+    });
+
+    let app = {
+        module: {
+            controls: {
+                load: function () {
+                    return $("#tblData").DataTable({
+                        ajax: {
+                            url: "/Lab/Home/GetAllNonPaidInvoice",
+                        },
+                        dom: 'Bfrtip',
+                        buttons: ['print'],
+                        scrollX: true,
+                        columns: [
+                            { data: "name", autoWidth: true },
+                            { data: "modelName", autoWidth: true },
+                            { data: "price", autoWidth: true },
+                            { data: "dueAmt", autoWidth: true },
+                            { data: "doctorName", autoWidth: true },
+                            { data: "appoinmentDate", autoWidth: true },
+
+                          
+                        ],
+                    });
+                },
+            },
+        },
+    };</script>
+
+
+}

@@ -96,6 +96,7 @@ namespace APP.Areas.Identity.Pages.Account
 
                     var user = await _unitOfWork.ApplicationUser.GetFirstOrDefaultAsync(a => a.Email == Input.Email);
                     var Role = await _userManager.GetRolesAsync(user);
+                    _session.SetString("Role", Role[0]);
                     if (Role[0] == SD.RoleAdmin)
                     {
                         return RedirectToAction("Index", "Home", new { Area = "Main" });
