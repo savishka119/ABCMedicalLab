@@ -29,6 +29,7 @@ namespace APP.Areas.Public.Controllers
         private readonly ISession _session;
         private readonly IEmailSender _emailSender;
 
+        //constructor
         public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork, IWebHostEnvironment hostEnvironment, IHttpContextAccessor httpContext, IEmailSender emailSender)
         {
             _hostEnvironment = hostEnvironment;
@@ -37,6 +38,7 @@ namespace APP.Areas.Public.Controllers
             _session = httpContext.HttpContext.Session;
             _emailSender = emailSender;
         }
+       //view homepage
         public async Task<IActionResult> Index()
         {
             IEnumerable<Test> productList = await _unitOfWork.Tests.GetAllAsync(a => a.CurStatus == SD.Active);
@@ -49,6 +51,8 @@ namespace APP.Areas.Public.Controllers
             return View();
 
         }
+
+//view checkup function (lab tests)
         public async Task<IActionResult> CheckUp(string keyword="")
         {
             IEnumerable<Test> productList = await _unitOfWork.Tests.GetAllAsync(a => a.CurStatus == SD.Active);
@@ -63,6 +67,7 @@ namespace APP.Areas.Public.Controllers
 
             return View();
         }
+       //view of creating appointment
         [Authorize(Roles = SD.RoleCustomer)]
         public async Task<IActionResult> AddToOrder(string Id)
         {
@@ -80,6 +85,7 @@ namespace APP.Areas.Public.Controllers
            
             return View(crtVM);
         }
+     //post method for creating new appointment 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToOrder(OrderVM order)
@@ -93,6 +99,7 @@ namespace APP.Areas.Public.Controllers
                 {
                     try
                     {
+                        //appointment object declaration
                         var orderDetails = new Orders()
                         {
                            AppoinmentDateTime=order.Orders.AppoinmentDateTime,
@@ -106,10 +113,12 @@ namespace APP.Areas.Public.Controllers
                            TotPaid=0.00,
                            UserId=claim.Value
                         };
+                        //save new appointment
                         await _unitOfWork.Order.AddAsync(orderDetails);
                         _unitOfWork.SaveAsync();
                         _unitOfWork.CommitAsync(transaction);
 
+                        //sending email 
                         await _emailSender.SendEmailAsync(user.UserName, "Appoinment Confirmation",
                             "<p>Hi " + user.FirstName + " " + user.LastName + " " + user.UserName 
                             + ",</p><br><br><p>Your Appoinment for ABC Laboratories is submitted.</p><br>" +
@@ -117,10 +126,12 @@ namespace APP.Areas.Public.Controllers
                             " Patient No : "+orderDetails.Id+"<br>" +
                             " Doctor : " + orderDetails.DoctorName + "  <br>" +
                             " Date And Time : " + orderDetails.AppoinmentDateTime.ToString("yyyy-MMM-dd hh:mm:ss tt") + " </p> <br> <p>Thank You</P>");
+                        //return to view "ViewNonPaidOrder" page
                         return RedirectToAction("ViewNonPaidOrder");
                     }
                     catch (Exception)
                     {
+                        //error handling
                         _unitOfWork.RollbackAsync(transaction);
                         return StatusCode(StatusCodes.Status500InternalServerError);
                     }
@@ -261,6 +272,7 @@ namespace APP.Areas.Public.Controllers
 
                     obj.TotPaid = Convert.ToDouble(_session.GetString("amount"));
                     _unitOfWork.SaveAsync();
+                    //on successful payment, show success page to user
                     return RedirectToAction(nameof(PaymentSuccess));
                 }
             }
